@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model - Copy %282%29\" />
     <Folder Include="Models\" />
   </ItemGroup>
 
