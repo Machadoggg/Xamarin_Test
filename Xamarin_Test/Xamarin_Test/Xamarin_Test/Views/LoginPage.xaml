@@ -7,7 +7,8 @@
              BackgroundImageSource="otro.png">
     <ContentPage.Content>
 
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Login}">
             <StackLayout
                 Padding="5">
 
@@ -68,6 +69,7 @@
                         Grid.Row="0"
                         Grid.Column="1"
                         Keyboard="Email"
+                        Text="{Binding Email, Mode=TwoWay}"
                         Placeholder="Enter your email..."/>
 
                     <Label
@@ -80,13 +82,15 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         IsPassword="True"
+                        Text="{Binding Password, Mode=TwoWay}"
                         Placeholder="Enter your password...">
                     </Entry>
 
                 </Grid>
                 
                 <ActivityIndicator
-                    VerticalOptions="CenterAndExpand">
+                    VerticalOptions="CenterAndExpand"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}">
                 </ActivityIndicator>
                 
                 <StackLayout
@@ -98,7 +102,8 @@
                         VerticalOptions="Center"
                         Margin="10,0"/>
                     <Switch
-                        HorizontalOptions="End">
+                        HorizontalOptions="End"
+                        IsToggled="{Binding IsRemember, Mode=TwoWay}">
                     </Switch>
                 </StackLayout>
 
@@ -116,6 +121,7 @@
                     VerticalOptions="CenterAndExpand">
                     <Button
                         BackgroundColor="RoyalBlue"
+                        Command="{Binding LoginCommand}"
                         CornerRadius="15"
                         HorizontalOptions="FillAndExpand"
                         Text="Login"
@@ -150,7 +156,6 @@
 
             </StackLayout>
         </ScrollView>
-
 
     </ContentPage.Content>
 </ContentPage>
