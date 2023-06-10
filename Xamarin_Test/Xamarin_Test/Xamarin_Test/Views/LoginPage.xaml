@@ -124,6 +124,7 @@
                         Command="{Binding LoginCommand}"
                         CornerRadius="15"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="Login"
                         TextColor="White">
                     </Button>
@@ -131,6 +132,7 @@
                         BackgroundColor="SeaGreen"
                         CornerRadius="15"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="Register"
                         TextColor="White">
                     </Button>
