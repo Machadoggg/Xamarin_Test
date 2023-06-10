@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin_Test.Views;
 
 namespace Xamarin_Test.ViewModels
 {
@@ -13,6 +14,7 @@ namespace Xamarin_Test.ViewModels
 
 
         #region Attributes
+        private string email;
         private string password;
         private bool isRunning;
         private bool isEnabled;
@@ -21,8 +23,8 @@ namespace Xamarin_Test.ViewModels
         #region Properties
         public string Email
         {
-            get;
-            set;
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
         }
 
         public string Password
@@ -50,6 +52,9 @@ namespace Xamarin_Test.ViewModels
         {
             this.IsRemember = true;
             this.IsEnabled = true;
+
+            this.email = "machadoggg@gmail.com";
+            this.password = "1234";
         }
         #endregion
 
@@ -100,11 +105,13 @@ namespace Xamarin_Test.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await Application.Current.MainPage.DisplayAlert(
-                    "OK",
-                    "Login OK!",
-                    "Accept");
-            return;
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            //Llamada al singleton, antes de pintar la (CustomersPage)
+            //estamos estableciendo la (CustomersViewModel) alineado a la (MainViewModel)
+            MainViewModel.GetInstance().Customers = new CustomersViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new CustomersPage());
         }
         #endregion
     }
