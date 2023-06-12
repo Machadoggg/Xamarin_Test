@@ -14,37 +14,37 @@
     public class ApiService
     {
         //motodo que verifica si hay conexion o no con internet
-        //public async Task<Response> CheckConnection()
-        //{
-        //    //(CrossConnectivity) verifica si esta encendido el
-        //    //internet en equipo, (si esta en modo avion, o no tiene datos)
-        //    if (!CrossConnectivity.Current.IsConnected)
-        //    {
-        //        return new Response
-        //        {
-        //            IsSuccess = false,
-        //            Message = "Please turn on your internet settings.",
-        //        };
-        //    }
+        public async Task<Response> CheckConnection()
+        {
+            //(CrossConnectivity) verifica si esta encendido el
+            //internet en equipo, (si esta en modo avion, o no tiene datos)
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Please turn on your internet settings.",
+                };
+            }
 
-        //    //hace un PIN a google
-        //    var isReachable = await CrossConnectivity.Current.IsRemoteReachable(
-        //        "google.com");
-        //    if (!isReachable)
-        //    {
-        //        return new Response
-        //        {
-        //            IsSuccess = false,
-        //            Message = "Check you internet connection.",
-        //        };
-        //    }
+            //hace un PIN a google
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable(
+                "google.com");
+            if (!isReachable)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Check you internet connection.",
+                };
+            }
 
-        //    return new Response
-        //    {
-        //        IsSuccess = true,
-        //        Message = "Ok",
-        //    };
-        //}
+            return new Response
+            {
+                IsSuccess = true,
+                Message = "Ok",
+            };
+        }
 
         public async Task<TokenResponse> GetToken(
             string urlBase,

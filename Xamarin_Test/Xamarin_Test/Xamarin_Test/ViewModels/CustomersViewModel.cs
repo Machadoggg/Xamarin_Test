@@ -36,6 +36,20 @@ namespace Xamarin_Test.ViewModels
         #region Methods
         private async void loadCustomers()
         {
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess) 
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    connection.Message,
+                    "Accept");
+
+                //Back por codigo (es el equivalente si un usario le da a a la flechita para devolverse)
+                await Application.Current.MainPage.Navigation.PopAsync();
+                return;
+            }
+
             var response = await this.apiService.GetList<Customer>(
                 "http://192.168.1.14:45455",
                 "/api",
@@ -47,6 +61,9 @@ namespace Xamarin_Test.ViewModels
                     "Error",
                     response.Message,
                     "Accept");
+
+                //Back por codigo (es el equivalente si un usario le da a a la flechita para devolverse)
+                await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
 

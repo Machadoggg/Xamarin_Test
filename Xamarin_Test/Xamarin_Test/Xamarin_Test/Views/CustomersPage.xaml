@@ -10,6 +10,16 @@
             <Label Text="Welcome to Customers page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout
+                BindingContext="{Binding Customers}"
+                Padding="5">
+                <ListView
+                    ItemsSource="{Binding Customers}">
+                    
+                </ListView>
+                
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
