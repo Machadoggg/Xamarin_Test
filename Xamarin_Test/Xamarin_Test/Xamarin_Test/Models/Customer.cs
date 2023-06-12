@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Xamarin_Test.Models
 {
-    public class Customers
+    public class Customer
     {
         [JsonProperty(PropertyName = "codigo")]
         public int Codigo { get; set; }
