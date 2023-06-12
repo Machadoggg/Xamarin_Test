@@ -1,6 +1,9 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin_Test.Models;
 using Xamarin_Test.Services;
@@ -10,11 +13,14 @@ namespace Xamarin_Test.ViewModels
     public class CustomersViewModel : BaseViewModel
     {
         #region Services
-        private ApiService apiService; 
+        private ApiService apiService;
         #endregion
 
         #region Attributes
         private ObservableCollection<Customer> customers;
+        private bool isRefreshing;
+        private string filter;
+        private List<Customer> customersList;
         #endregion
 
         #region Properties
@@ -22,6 +28,20 @@ namespace Xamarin_Test.ViewModels
         {
             get { return this.customers; }
             set { SetValue(ref this.customers, value); }
+        }
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { SetValue(ref this.isRefreshing, value); }
+        }
+        public string Filter
+        {
+            get { return this.filter; }
+            set 
+            { 
+                SetValue(ref this.filter, value);
+                this.Search();
+            }
         }
         #endregion
 
@@ -36,10 +56,12 @@ namespace Xamarin_Test.ViewModels
         #region Methods
         private async void loadCustomers()
         {
+            this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
 
-            if (!connection.IsSuccess) 
+            if (!connection.IsSuccess)
             {
+                this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     connection.Message,
@@ -57,6 +79,7 @@ namespace Xamarin_Test.ViewModels
 
             if (!response.IsSuccess)
             {
+                this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
@@ -67,9 +90,45 @@ namespace Xamarin_Test.ViewModels
                 return;
             }
 
-            var list = (List<Customer>)response.Result;
-            this.Customers = new ObservableCollection<Customer>(list);
-        } 
+            this.customersList = (List<Customer>)response.Result;
+            this.Customers = new ObservableCollection<Customer>(this.customersList);
+            this.IsRefreshing = false;
+        }
+        #endregion
+
+        #region Commands
+        public ICommand RefreshCommand 
+        {
+            get
+            {
+                return new RelayCommand(loadCustomers);
+            }
+        }
+
+        public ICommand SearchCommand 
+        {
+            get
+            {
+                return new RelayCommand(Search);
+            }
+        }
+
+        private void Search()
+        {
+            if (string.IsNullOrEmpty(this.Filter))
+            {
+                this.Customers = new ObservableCollection<Customer>(
+                    this.customersList);
+            }
+            else
+            {
+                this.Customers = new ObservableCollection<Customer>(
+                    this.customersList.Where(
+                        c => c.Nombres.ToLower().Contains(this.Filter.ToLower()) ||
+                             c.Apellido_1.ToLower().Contains(this.Filter.ToLower())));
+            }
+        }
+
         #endregion
     }
 }

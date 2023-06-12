@@ -7,19 +7,68 @@
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Customers}">
-            <Label Text="Welcome to Customers page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-            <StackLayout
-                BindingContext="{Binding Customers}"
-                Padding="5">
-                <ListView
-                    ItemsSource="{Binding Customers}">
-                    
-                </ListView>
-                
-            </StackLayout>
+            <SearchBar
+                BackgroundColor="Silver"
+                HeightRequest="46"
+                Text="{Binding Filter, Mode=TwoWay}"
+                Placeholder="Buscar"
+                SearchCommand="{Binding SearchCommand}">
+            </SearchBar>
+            <ListView 
+                BackgroundColor="Silver"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Customers}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="true"
+                                Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--<ffimageloading:CachedImage 
+                                        Grid.Column="0"
+                                        HeightRequest="30"
+                                        Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}"
+                                        WidthRequest="60">
+                                    </ffimageloading:CachedImage>-->
+                                    <StackLayout 
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            FontSize="Medium" 
+                                            Text="{Binding Nombres}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Text="{Binding Apellido_1}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </StackLayout>
+                                    <!--<Image 
+                                        Grid.Column="2"
+                                        HorizontalOptions="End" 
+                                        Source="ic_chevron_right">
+                                    </Image>-->
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
