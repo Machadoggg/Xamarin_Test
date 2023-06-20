@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.machadoggg.xamarin_test" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
-	<application android:label="CFA_Test" android:theme="@style/MainTheme" android:usesCleartextTraffic="true" android:icon="@drawable/ico_cfa"></application>
+	<application android:label="CFA_Test" android:theme="@style/MainTheme" android:usesCleartextTraffic="true" android:icon="@drawable/ico_cfa">
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCcIXpBQtbrR2MgiGOHY_vgodX58AGwoDA" />
+	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	
 </manifest>

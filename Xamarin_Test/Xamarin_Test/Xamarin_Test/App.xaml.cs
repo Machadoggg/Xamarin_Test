@@ -11,7 +11,8 @@ namespace Xamarin_Test
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new MapPage());
         }
 
         protected override void OnStart()
