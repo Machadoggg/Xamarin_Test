@@ -13,6 +13,11 @@
             get;
             set; 
         }
+        public MapViewModel Maps
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="Xamarin_Test.Views.MapPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Maps">
     <ContentPage.Content>
 
@@ -14,13 +15,14 @@
 
 
             <Grid 
+            BindingContext="{Binding Maps}"
                 x:Name="mapContainer"
-                WidthRequest="200"
-                HeightRequest="630">
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
                 <maps:Map x:Name="map"
-                  MapType="Street"
-                  IsShowingUser="true"
-                  VerticalOptions="FillAndExpand" />
+                          MapType="Street"
+                          IsShowingUser="true"
+                          VerticalOptions="FillAndExpand" />
             </Grid>
         
         </StackLayout>

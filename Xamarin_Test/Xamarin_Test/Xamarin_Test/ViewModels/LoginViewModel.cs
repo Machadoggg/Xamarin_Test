@@ -113,6 +113,20 @@ namespace Xamarin_Test.ViewModels
             MainViewModel.GetInstance().Customers = new CustomersViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new CustomersPage());
         }
+
+        public ICommand MapCommand
+        {
+            get
+            {
+                return new RelayCommand(Map);
+            }
+        }
+
+        private async void Map()
+        {
+            MainViewModel.GetInstance().Maps = new MapViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new MapPage());
+        }
         #endregion
     }
 }

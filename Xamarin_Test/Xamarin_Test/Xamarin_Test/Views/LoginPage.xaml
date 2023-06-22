@@ -140,7 +140,7 @@
                     </Button>
                     <Button
                         BackgroundColor="Violet"
-                        Command="{Binding LoginCommand}"
+                        Command="{Binding MapCommand}"
                         CornerRadius="15"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
