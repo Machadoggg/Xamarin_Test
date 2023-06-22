@@ -21,18 +21,36 @@ namespace Xamarin_Test.Views
             var map = new Map();
 
             // Establece el centro del mapa en una ubicación específica
-            var position = new Position(6.242988, -75.555248);
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(1)));
+            var positionUser = new Position(6.242988, -75.555248);
+            var positionItm = new Position(6.245495936323433, -75.55104127505932);
+            var positionCfa = new Position(6.251262614865208, -75.56532325621255);
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(positionUser, Distance.FromKilometers(1)));
 
             // Agrega un marcador al mapa
-            var pin = new Pin
+            var pinUser = new Pin
             {
                 Type = PinType.Place,
-                Position = position,
+                Position = positionUser,
                 Label = "Mi ubicación",
-                Address = "San Francisco, CA"
+                Address = "Calle 50 # 33-53, Medellín, Antioquia"
+            }; 
+            var pinItm = new Pin
+            {
+                Type = PinType.Place,
+                Position = positionItm,
+                Label = "ITM Campus Fraternidad",
+                Address = "Calle 54a, Medellín, Antioquia"
             };
-            map.Pins.Add(pin);
+            var pinCfa = new Pin
+            {
+                Type = PinType.Place,
+                Position = positionCfa,
+                Label = "CFA Cooperativa Financiera Oficina Camino Real",
+                Address = "Cra. 47 #52 - 89, Medellín, Antioquia"
+            };
+            map.Pins.Add(pinUser);
+            map.Pins.Add(pinItm);
+            map.Pins.Add(pinCfa);
 
             // Agrega el mapa al control de mapa en la página
             mapContainer.Children.Add(map);
