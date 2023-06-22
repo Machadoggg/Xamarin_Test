@@ -132,6 +132,7 @@
                     </Button>
                     <Button
                         BackgroundColor="SeaGreen"
+                        Command="{ Binding RegisterCommand }"
                         CornerRadius="15"
                         HorizontalOptions="FillAndExpand"
                         IsEnabled="{Binding IsEnabled, Mode=TwoWay}"

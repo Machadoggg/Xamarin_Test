@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamarin_Test.Views.RegisterPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Register">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     Padding="5">
+                <ScrollView>
+                    <StackLayout>
+                        <!--<ffimageloading:CachedImage Aspect="AspectFit"
+                                                Source="{Binding Image}" 
+                                                CacheDuration= "50"
+                                                HeightRequest="150"
+                                                Margin="5"
+                                                RetryCount= "3"
+                                                RetryDelay= "600">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                            <ffimageloading:CachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                            </ffimageloading:CachedImage.GestureRecognizers>
+                        </ffimageloading:CachedImage>-->
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Código"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="0"
+                               Grid.Column="1"
+                               Keyboard="Numeric"
+                               Placeholder="Código"/>
+
+                            <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Tipo Documento"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="1"
+                               Grid.Column="1"
+                               Placeholder="Tipo Documento"/>
+
+                            <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Text="Número Documento"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="2"
+                               Grid.Column="1"
+                               Placeholder="Número Documento"/>
+
+                            <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Text="Nombres"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="3"
+                               Grid.Column="1"
+                               Placeholder="Nombres"/>
+
+                            <Label Grid.Row="4"
+                               Grid.Column="0"
+                               Text="Primer Apellido"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="4"
+                               Grid.Column="1"
+                               Placeholder="Primer Apellido"/>
+
+                            <Label Grid.Row="5"
+                               Grid.Column="0"
+                               Text="Segundo Apellido"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="5" 
+                               Grid.Column="1"
+                               Placeholder="Segundo Apellido"/>
+
+                            <Label Grid.Row="6"
+                               Grid.Column="0"
+                               Text="Género"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="6" 
+                               Grid.Column="1"
+                               Placeholder="Género"/>
+
+                            <Label Grid.Row="7"
+                               Grid.Column="0"
+                               Text="Facha Nacimiento"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="7" 
+                               Grid.Column="1"
+                               Placeholder="Facha Nacimiento"/>
+
+                            <Label Grid.Row="8"
+                               Grid.Column="0"
+                               Text="Direcciones"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="8" 
+                               Grid.Column="1"
+                               Placeholder="Direcciones"/>
+
+                            <Label Grid.Row="9"
+                               Grid.Column="0"
+                               Text="Teléfonos"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="9" 
+                               Grid.Column="1"
+                               Placeholder="Teléfonos"/>
+
+                            <Label Grid.Row="10"
+                               Grid.Column="0"
+                               Text="Emails"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="10"
+                               Grid.Column="1"
+                               Keyboard="Email"
+                               Placeholder="Emails"/>
+
+                            <Label Grid.Row="11"
+                               Grid.Column="0"
+                               Text="Contraseña"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="11"
+                               Grid.Column="1"
+                               IsPassword="True"
+                               Placeholder="Contraseña"/>
+
+                            <Label Grid.Row="12"
+                               Grid.Column="0"
+                               Text="Confirmar Contraseña"
+                               VerticalOptions="Center"/>
+                            <Entry Grid.Row="12"
+                               Grid.Column="1"
+                               IsPassword="True"/>
+
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+                <Button
+                    Text="Registrar"/>
+            </StackLayout>
+            <!--<busyindicator:SfBusyIndicator AnimationType="Gear" 
+                                       AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                	                   AbsoluteLayout.LayoutFlags="All"
+                	                   BackgroundColor="{StaticResource ColorAccent}"
+                	                   HorizontalOptions="Center"
+                	                   TextColor="{StaticResource ColorFontInverse}"
+                	                   IsVisible="{Binding IsRunning}"
+                	                   Title="{i18n:Translate Loading}"
+                	                   VerticalOptions="Center"
+                	                   ViewBoxWidth="80"
+                	                   ViewBoxHeight="80" />-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -126,6 +127,20 @@ namespace Xamarin_Test.ViewModels
         {
             MainViewModel.GetInstance().Maps = new MapViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new MapPage());
+        }
+
+        public ICommand RegisterCommand
+        {
+            get
+            { 
+                return new RelayCommand(Register);
+            }
+        }
+
+        private async void Register()
+        {
+            MainViewModel.GetInstance().Register = new RegisterViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
         #endregion
     }
